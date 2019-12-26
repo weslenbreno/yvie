@@ -1,0 +1,28 @@
+import api from 'config/api';
+
+export const create<%= props.name %> = data =>
+  api
+    .post('/<%= props.name.toLowerCase() %>s', data)
+    .then(response => response)
+    .catch(error => ({ error }));
+
+
+export const list<%= props.name %>s = () =>
+  api
+    .post('/<%= props.name.toLowerCase() %>s')
+    .then(response => response)
+    .catch(error => ({ error }));
+
+
+export const update<%= props.name %> = (data) =>
+  api
+    .patch('/<%= props.name.toLowerCase() %>s', data)
+    .then(response => response)
+    .catch(error => ({ error }));
+
+export const delete<%= props.name %> = (id) =>
+    api
+      .delete('/<%= props.name.toLowerCase() %>s', id)
+      .then(response => response)
+      .catch(error => ({ error }));
+  

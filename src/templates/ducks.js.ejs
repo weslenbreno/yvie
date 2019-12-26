@@ -1,0 +1,41 @@
+
+const INITIAL_STATE = []
+
+const Types = {
+    async: { 
+      LIST: '<%= props.name.toUpperCase() %>/LIST_ASYNC',
+      CREATE: '<%= props.name.toUpperCase() %>/CREATE_ASYNC',
+      UPDATE: '<%= props.name.toUpperCase() %>/UPDATE_ASYNC',
+      DELETE: '<%= props.name.toUpperCase() %>/DELETE_ASYNC',
+    },
+    sync: {
+      LIST: '<%= props.name.toUpperCase() %>/LIST',
+      CREATE: '<%= props.name.toUpperCase() %>/CREATE',
+      UPDATE: '<%= props.name.toUpperCase() %>/UPDATE',
+      DELETE: '<%= props.name.toUpperCase() %>/DELETE',   
+    }
+}
+
+const Actions = {
+  list<%= props.name %> = () => { type: Types.async.LIST }
+  create<%= props.name %> = () => { type: Types.async.CREATE }
+  update<%= props.name %> = () => { type: Types.async.UPDATE }
+  delete<%= props.name %> = () => { type: Types.async.DELETE }
+}
+
+const reducer = (state = INITIAL_STATE, action) => {
+  switch (action.type) {
+    case Types.sync.LIST:
+      return action.payload;
+    case Types.sync.CREATE:
+      return action.payload;  
+    case Types.sync.UPDATE:
+      return action.payload;  
+    case Types.sync.DELETE:
+      return action.payload;  
+    default:
+      return state;
+  }
+}
+
+export default reducer;

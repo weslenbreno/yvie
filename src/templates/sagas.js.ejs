@@ -1,0 +1,52 @@
+/* eslint-disable no-console */
+import { takeLatest, put, call, all } from 'redux-saga/effects';
+import { list<%= props.name %>s, get<%= props.name %>, update<%= props.name %>, delete<%= props.name %> } from 'services/<%= props.name %>';
+import { Types } from '../ducks/<%= props.name.toLowerCase() %>';
+
+function* list<%= props.name %>Async() {
+  const { data, error } = yield call(list<%= props.name %>);
+  if(!error) {
+    yield put({ type: Types.sync.LIST, payload: data });
+  } else {
+    console.log(e);
+  }
+}
+
+function* create<%= props.name %>Async({ payload }) {
+  const { data, error } = yield call(create<%= props.name %>, payload);
+  if(!error) {
+    yield put({ type: Types.sync.CREATE, payload: data });
+  } else {
+    console.log(e);
+  }
+}
+
+function* update<%= props.name %>Async({ payload }) {
+  const { data, error } = yield call(update<%= props.name %>, payload);
+  if(!error) {
+    yield put({ type: Types.sync.UPDATE, payload: data });
+  } else {
+    console.log(e);
+  }
+}
+
+function* delete<%= props.name %>Async({ payload }) {
+  const { data, error } = yield call(delete<%= props.name %>, payload);
+  if(!error) {
+    put({ type: Types.sync.LIST, payload: data });
+  } else {
+    console.log(e);
+  }
+}
+
+function* <%= props.name %>Saga() {
+  yield all([
+    takeLatest(Types.async.CREATE, create<%= props.name %>Async),
+    takeLatest(Types.async.LIST, list<%= props.name %>Async),
+    takeLatest(Types.async.GET, get<%= props.name %>Async),
+    takeLatest(Types.async.UPDATE, update<%= props.name %>Async),
+    takeLatest(Types.async.DELETE, delete<%= props.name %>Async),
+  ]);
+}
+
+export default <%= props.name %>sSaga;
