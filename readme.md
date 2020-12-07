@@ -1,6 +1,6 @@
 # yvie CLI
 
-A CLI for yvie.
+A CLI for React.
 
 ## Customizing your CLI
 
